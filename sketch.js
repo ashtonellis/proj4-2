@@ -62,7 +62,7 @@ function draw() {
       down = false;
     } }  }
   
-
+//need pop up to next game
   
 }
 
@@ -87,3 +87,4 @@ function mousePressed() {
     clean++;}
 }
 
+//want to add text about how much trash ends up in ocean yearly
