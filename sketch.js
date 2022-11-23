@@ -28,24 +28,6 @@ function setup() {
 
 function draw() { 
   image(shore,0,0);
-  image(water,0,wave);
-
-
-  // none of this works
-  if (down) {
-    wave++;
-  } else { if (up) {
-    wave--;
-  } }
-
-  
-  if (wave >= 0) {
-    up = true; down = false;
-  } else { if (clean >= 6) {
-    down = true;
-  }  }
-  //none of this works
- 
 
   if (plastic1){
     image(plastic,110,235); }
@@ -59,6 +41,29 @@ function draw() {
     image(glass,310,180,50,155);}
   if (glass3){
     image(glass,580,295,50,155);}
+
+  image(water,0,wave);
+
+  if (clean >= 6) {
+    wave = (wave + 2);
+    if (wave > 0) {
+      clean = false;
+      down = true;
+    }
+  } else { if (down) {
+    wave = (wave - 2);
+    plastic1 = true;
+    plastic2 = true;
+    plastic3 = true;
+    glass1 = true;
+    glass2 = true;
+    glass3 = true;
+    if (wave < -350) {
+      down = false;
+    } }  }
+  
+
+  
 }
 
 function mousePressed() {
