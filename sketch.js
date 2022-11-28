@@ -3,6 +3,7 @@ let water;
 let bottle;
 let plastic;
 let glass;
+let again;
 let clean = 0;
 let wave = -350;
 let plastic1 = true;
@@ -13,13 +14,16 @@ let glass2 = true;
 let glass3 = true;
 let up = false;
 let down = false;
-
+let tryagain = false;
+let yes = false;
+let no = false;
 
 function preload() {
   shore = loadImage('assets/shore.png');
   water = loadImage('assets/wave.png')
   plastic = loadImage('assets/plastic.png');
-  glass = loadImage('assets/glass.png')
+  glass = loadImage('assets/glass.png');
+  again = loadImage('assets/tryagain.png');
 }
 
 function setup() {
@@ -60,31 +64,35 @@ function draw() {
     glass3 = true;
     if (wave < -350) {
       down = false;
+      tryagain = true;
+      yes = false;
     } }  }
   
-//need pop up to next game
+  if (tryagain) {image(again,250,86)}
+  if (yes) {tryagain = false;}
+  if (no) {
+  //move to next scene
+  }
   
 }
 
 function mousePressed() {
   if (collidePointRect(mouseX,mouseY,110,235,50,130)) {
-    plastic1 = false;
-    clean++;}
+    plastic1 = false; clean++;}
   if (collidePointRect(mouseX,mouseY,455,455,50,130)){
-    plastic2 = false;
-    clean++;}
+    plastic2 = false; clean++;}
   if (collidePointRect(mouseX,mouseY,710,235,50,130)){
-    plastic3 = false;
-    clean++;}
+    plastic3 = false; clean++;}
   if (collidePointRect(mouseX,mouseY,210,420,50,155)){
-    glass1 = false;
-    clean++;}
+    glass1 = false; clean++;}
   if (collidePointRect(mouseX,mouseY,310,180,50,155)){
-    glass2 = false;
-    clean++;}
+    glass2 = false; clean++;}
   if (collidePointRect(mouseX,mouseY,580,295,50,155)){
-    glass3 = false;
-    clean++;}
+    glass3 = false; clean++;}
+  if (tryagain) {
+    if (collidePointRect(mouseX,mouseY,270,190,80,30)) {yes = true;}
+    if (collidePointRect(mouseX,mouseY,450,190,80,30)) {no = true;}
+  }
 }
 
 //want to add text about how much trash ends up in ocean yearly
